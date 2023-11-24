@@ -1,0 +1,126 @@
+Q1.
+<html>
+<table>
+<form name="f" method="GET" action="http://localhost/php/slip23.php">
+<tr><th colspan=2>Enter Details</th>
+	<td>
+
+	<tr><td>enter roll no:</td>
+	<td><input type="text" name=r></td></tr>
+	
+	<tr><td>enter name:</td>
+	<td><input type="text" name=n></td></tr>
+
+	<tr><td>Java:</td>
+	<td><input type="text" name=s1></td></tr>
+
+	<tr><td>PHP: </td>
+	<td><input type="text" name=s2></td></tr>
+
+	<tr><td>DS:</td>
+	<td><input type="text" name=s3></td></tr>
+
+	<tr><td>OS:</td>
+	<td><input type="text" name=s4></td></tr>
+
+	<tr><td>Python: </td>
+	<td><input type="text" name=s5></td></tr>
+
+	<tr><td>submit:</td>
+	<td><input type="submit" name=s value=Proceed></td></tr>
+		
+	</td>
+	</tr>
+</form>
+</html>
+Php:
+<html>
+<body>
+<?php
+	
+$r=explode(",",$_GET['r']);
+	$n=explode(",",$_GET['n']);
+	$s1=explode(",",$_GET['s1']);
+	$s2=explode(",",$_GET['s2']);
+	$s3=explode(",",$_GET['s3']);
+	$s4=explode(",",$_GET['s4']);
+	$s5=explode(",",$_GET['s5']);
+	
+?>
+<center>
+<table border=1>
+<?php
+	$c=count($r);
+	echo "<tr><th>Roll no</th>
+		  <th>Name</th>
+		  <th>s1</th>
+			<th>s2</th>
+			<th>s3</th>
+			<th>s4</th>
+			<th>s5</th>
+			<th>total</th>
+			<th>per</th></tr>";
+	
+	for($i=0;$i<$c;$i++)
+	{
+		$t=$s1[$i]+$s2[$i]+$s3[$i]+$s4[$i]+$s5[$i];
+		$p=$t/5;
+		echo "<tr><td>".$r[$i]."</td>
+				<td>".$n[$i]."</td>
+				<td>".$s1[$i]."</td>
+				<td>".$s2[$i]."</td>
+				<td>".$s3[$i]."</td>
+				<td>".$s4[$i]."</td>
+				<td>".$s5[$i]."</td>
+				<td>".$t[$i]."</td>
+				<td>".$p[$i]."</td></tr>";
+	}
+?>
+</table>
+</center>
+</body>
+</html>
+
+Q2.A)
+import pandas as pd
+from sklearn.preprocessing import MinMaxScaler
+
+df = pd.read_csv("D:\Computer Science\TY\SEM5\WT-1\slips-solved\winequality-red.csv")
+
+print('\n\n Data Scaled between 0 to 1')
+scaler = MinMaxScaler(feature_range=(0, 1))
+scaled = scaler.fit_transform(df)
+print(scaled.round(2))
+
+B)
+import pandas as pd
+import scipy.stats as s
+from sklearn import preprocessing
+
+df = pd.read_csv("D:\Computer Science\TY\SEM5\WT-1\slips-solved\winequality-red.csv")
+print('\nInitial Mean: ',s.tmean(df).round(2))
+
+print('\n\nInitial StandardvDeviation:')
+print('---------------------------------')
+print(round(df.std(),2))
+
+df_scaled = preprocessing.scale(df)
+df_scaled.mean(axis=0)
+df_scaled.std(axis=0)
+
+print('\nStandardized Data\n',df_scaled.round(2))
+print("\nScaled Mean:",s.tmean(df_scaled).round(2))
+print("\nScaled standard Deviation: ",round(df_scaled.std(),2))
+
+C)
+import pandas as pd
+import scipy.stats as s
+from sklearn import preprocessing
+
+df = pd.read_csv("D:\Computer Science\TY\SEM5\WT-1\slips-solved\winequality-red.csv")
+
+df_binarized = preprocessing.Binarizer(threshold=5).transform(df)
+print("\n Binarized data")
+print("-------------------")
+print(df_binarized)
+

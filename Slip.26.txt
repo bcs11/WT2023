@@ -1,0 +1,112 @@
+Q1
+<HTML>
+  <BODY>
+     <form name="f1" method="POST" action="slip26.php">
+    <form name="f1" method="POST" action="hos.php">
+        <br> <b>Enter the  Hospital NAME:</b>
+
+          <input type="text" name="t1">
+         <br> <br> 
+          <input type="submit"  name="b1" >
+   
+      </form>
+    </BODY>
+</HTML>
+Php:
+<?php
+$conn=pg_connect("host=localhost port=5432  dbname=stud user=postgres password=123456");
+if(!$conn)
+{
+
+echo("An error.....in connection");
+}
+else
+{
+echo("connection succesfull");
+      $a=$_POST['t1']; 
+         echo("<table border='3' >");
+         echo("<tr><th> d_no</th><th> dnm</th><th> daddress</th><th> dcity</th><th> area</th></tr>");
+         echo("<br>");  
+  
+         
+        
+    $s1=pg_query("select dno,dname,dadd,dcity,darea from doct,hosp where hosp.hno=doct.hno1 and hosp.hname='$a'") or die(pg_error());
+
+echo "hello";
+    
+        while($r=pg_fetch_assoc($s1))
+        {
+                  echo "hello"; 
+                         
+             echo("<tr>");     echo("<td>");
+                 echo $r['dno'];   echo("</td><td>");
+                 echo $r['dname'];      echo("</td><td>");
+                 echo $r['dadd'];     echo("</td><td>");
+                 echo $r['dcity'];      echo("</td><td>") ;
+                 echo $r['darea'];       echo("</td></tr>");
+            }
+    echo("</table>");
+}
+?>
+
+Q2.A)
+import numpy as np
+import matplotlib.pyplot as plt
+x=np.random.randn(50)
+y=np.random.randn(50)
+plt.plot(x,y)
+plt.scatter(x,y)
+plt.hist(x)
+plt.boxplot(x, vert=False)
+plt.show()
+plt.scatter(x, y, s=110, c = 'red', marker ='*', alpha=0.7)
+plt.hist(x, facecolor ='y',linewidth=2,edgecolor='k', bins=30, alpha=0.6)
+0R
+import matplotlib.pyplot as plt
+import numpy as np
+
+# Generate random data
+data = np.random.randint(0, 100, 50)
+
+# Line chart
+plt.figure(figsize=(12, 4))
+plt.subplot(2,2,1)
+plt.plot(data, color='blue', marker='o')
+plt.title('Line Chart')
+plt.xlabel('Index')
+plt.ylabel('Value')
+
+# Scatter plot
+plt.subplot(2,2,2)
+plt.scatter(range(len(data)), data, color='green', marker='x')
+plt.title('Scatter Plot')
+plt.xlabel('Index')
+plt.ylabel('Value')
+
+# Histogram
+plt.subplot(2,2,3)
+plt.hist(data, bins=10, color='red', alpha=0.7)
+plt.title('Histogram')
+plt.xlabel('Value')
+plt.ylabel('Frequency')
+
+# Box plot
+plt.subplot(2,2,4)
+plt.boxplot(data)
+plt.title('Box Plot')
+plt.xlabel('Value')
+
+plt.tight_layout()
+plt.show()
+
+B)import matplotlib.pyplot as plt
+
+subjects = ['WT', 'FDS', 'OS', 'CN', 'TCS']
+marks = [90, 88, 78, 95, 70]
+
+# Bar chart
+plt.bar(subjects, marks, color='skyblue')
+plt.title('Bar Chart')
+plt.xlabel('Subjects')
+plt.ylabel('Marks')
+plt.show()

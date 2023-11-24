@@ -1,0 +1,66 @@
+Q1.
+   <?php
+
+	$highTemps = array(68, 70, 72, 58, 60, 79, 82, 73, 75, 77, 73, 58, 63, 79, 78,);
+ 
+
+	$count = count($highTemps);
+ 
+
+	$total = 0;
+	foreach ($highTemps as $h)
+	{
+  		$total += $h;
+	}
+ 	$avg = round($total / $count);
+ 
+	echo "<p>The average high temperature for the month was $avg &deg;F.</p>\n";
+	$topTemps = array_slice($highTemps, 0, 5);
+	echo "<p>The warmest five high temperatures were: <br />\n";
+	foreach($topTemps as $t)
+	{
+  		echo "$t &deg;F <br/> \n";
+	}
+	echo "</p>";
+ ?>
+Q2.A)
+import pandas as pd
+from sklearn.preprocessing import MinMaxScaler
+
+df = pd.read_csv("D:\Computer Science\TY\SEM5\WT-1\WT-FDS-slips-solved\winequality-red.csv")
+
+print('\n\n Data Scaled between 0 to 1')
+scaler = MinMaxScaler(feature_range=(0, 1))
+scaled = scaler.fit_transform(df)
+print(scaled.round(2))
+
+B)import pandas as pd
+import scipy.stats as s
+from sklearn import preprocessing
+
+df = pd.read_csv("D:\Computer Science\TY\SEM5\WT-1\slips-solved\winequality-red.csv")
+print('\nInitial Mean: ',s.tmean(df).round(2))
+
+print('\n\nInitial StandardvDeviation:')
+print('---------------------------------')
+print(round(df.std(),2))
+
+df_scaled = preprocessing.scale(df)
+df_scaled.mean(axis=0)
+df_scaled.std(axis=0)
+
+print('\nStandardized Data\n',df_scaled.round(2))
+print("\nScaled Mean:",s.tmean(df_scaled).round(2))
+print("\nScaled standard Deviation: ",round(df_scaled.std(),2))
+
+C)import pandas as pd
+import scipy.stats as s
+from sklearn import preprocessing
+
+df = pd.read_csv("D:\Computer Science\TY\SEM5\WT-1\slips-solved\winequality-red.csv")
+dn = preprocessing.normalize(df,norm = 'l1')
+print("\n L1 Normalized Data")
+print("-----------------------")
+print(dn.round(2))
+
+    

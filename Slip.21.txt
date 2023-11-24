@@ -1,0 +1,74 @@
+Q1.
+<html>
+<body>
+<form name="f1" method="POST" action="slip21.php">
+<center>MENU</center>
+1.Insert an element in queue<br>
+2.Delete element from queue<br>
+3.Display the contents of stack<br>
+  Enter your choice : 
+<input type="text" name="t1"><br>
+<input type="submit" value=ok>
+
+</form>
+</body>
+</html>
+php:
+<?php
+
+    $ch=$_POST['t1'];
+    $a=array(10,20,1,2,3,4,5,6);
+    switch($ch)
+    {
+        
+            
+            
+        case 1:echo"<br>ORIGINAL QUEUE IS :";
+            foreach($a as $v)
+            {
+                echo"$v\t";
+            }
+            array_unshift($a,'7');
+                echo"<br>After inserting an element queue is :";
+            foreach($a as $v)
+            {
+                echo"$v\t";
+            }
+            break;
+        case 2:echo"<br>ORIGINAL QUEUE IS :";
+            foreach($a as $v)
+            {
+                echo"$v\t";
+            }
+            array_shift($a);
+            echo"<br>Queue after deleting one element : ";
+            foreach($a as $v)
+            {
+                echo"$v\t";
+            }
+            break;
+        case 3:echo"<br>ORIGINAL QUEUE IS :";
+             foreach($a as $v)
+            {
+                echo"$v\t";
+             }
+            break;
+        default :echo"Invalid choice";
+    }
+  
+?>
+Q2.A)
+import pandas as pd
+import seaborn as sns
+iris= pd.read_csv("D:\Computer Science\TY\SEM5\WT-1\slips-solved\iris.csv")
+ax= plt.subplots(1,1, figsize=[10,8])
+sns.countplot('Species',data=iris)
+plt.title("Iris Species Count")
+plt.show()
+
+B)
+import pandas as pd
+import matplotlib.pyplot as plt
+iris=pd_read_csv("/home/pc/document/TyBcs05/iris.csv")
+plt.hits('species',data=iris)
+plt.show()

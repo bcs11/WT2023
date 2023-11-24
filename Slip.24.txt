@@ -1,0 +1,47 @@
+Q1.
+<html>
+<body>
+<form action="slip24.php" method="POST">
+Enter 1st file name
+<input type="text" name=txt1><br>
+Enter 2nd file name
+<input type="text" name=txt2><br>
+Append <input type="radio" name="opt1" value="o">
+<input type="submit" value="ok">
+</form>
+</body>
+</html>
+Php:
+<?php
+    $f1=$_POST['txt1'];
+    $f2=$_POST['txt2'];
+
+  $file1=fopen($f1,"r")or exit("cant open file");
+   echo "hello";
+  $file2=fopen($f2,"a+")or exit("cant open file");
+
+while(!feof($file1))
+   {
+    $data=fread($file1,filesize($f1));
+    fwrite($file2,$data);
+    }
+echo "file appended";
+fclose($file1);
+fclose($file2);
+ ?>
+Q2.A)
+import matplotlib.pyplot as plt
+import pandas as pd
+iris = pd.read_csv("D:\Computer Science\TY\SEM5\WT-1\WT-FDS-slips-solved\iris.csv")
+t.bar(x,y,color='green')
+ax=plt.subplot(1,1,figsize=[10,8])
+sns.countplot('Species',data=iris)
+plt.title("Iris Species Count")
+plt.show()
+
+B)
+import matplotlib.pyplot as plt
+import pandas as pd
+iris = pd.read_csv("D:\Computer Science\TY\SEM5\WT-1\WT-FDS-slips-solved\iris.csv")
+plt.hist('Species',data=iris)
+plt.show()

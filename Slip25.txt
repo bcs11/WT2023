@@ -1,0 +1,73 @@
+Q1.
+<html>
+<form action="slip25.php" method="post">
+Enter file name<input type="text" name="file"><br>
+<input type="radio" name="b" value="1">1.DISPLAY TYPE OF FILE<br>
+<input type="radio" name="b" value="2">2.DISPLAY LAST ACCESSED TIME<br>
+<input type="radio" name="b" value="3">3.DISPLAY SIZE OF FILE<br>
+<input type="radio" name="b" value="4">4.DELETE THE FILE
+<input type="submit" name="submit" value="submit"><br>
+</form>
+</html>
+Php:
+<?php
+$file=$_POST['file'];
+$c=$_POST['b'];
+switch($c)
+
+    {
+
+    case 1 :
+                        $t=filetype($file);
+              echo "type of file is :$t";
+                         break; 
+
+    case 2:
+
+        $a=fileatime($file);
+        echo "last accessed time of file  is :$a<br>";
+        echo "Last access time".date("F d Y H:i:s.",fileatime($file));
+        break;
+    case 3:
+
+        $size=filesize($file);
+        echo "the size of file is:$size";
+            break;
+    case 4:
+
+                       if(unlink($file))
+                      echo "file is deletd";        
+                      else
+                      echo "file not deleted";
+        
+
+      default:"invalid choice";
+
+}
+
+?>
+
+Q2.A)
+import numpy as np
+import matplotlib.pyplot as plt
+x=np.random.randn(50)
+y=np.random.randn(50)
+plt.plot(x,y)
+plt.scatter(x,y)
+plt.hist(x)
+plt.boxplot(x, vert=False)
+plt.show()
+plt.scatter(x, y, s=110, c = 'red', marker ='*', alpha=0.7)
+plt.hist(x, facecolor ='y',linewidth=2,edgecolor='k', bins=30, alpha=0.6)
+
+B)
+import matplotlib.pyplot as plt
+
+subjects = ['WT', 'FDS', 'OS', 'CN', 'TCS']
+marks = [90, 88, 78, 95, 70]
+
+# Pie chart
+plt.pie(marks, labels=subjects, autopct='%1.1f%%')
+plt.title('Pie Chart')
+plt.show()
+     

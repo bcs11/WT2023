@@ -1,0 +1,58 @@
+Q1.Slip 29:
+<html>
+<body>
+<form action="slip29.php" method=POST>
+Enter the name of event<input type=text  name="txt1">
+<input type=submit value=ok>
+</form>
+</body>
+</html>
+Php:
+<?php
+$conn=pg_connect("host=localhost port=5433  dbname=ty22 user=postgres password=123456");
+if(!$conn)
+{
+
+echo("An error.....in connection");
+}
+else
+{
+echo("connection succesfull");
+echo "<br>";
+      
+$ename1=$_POST['txt1'];
+$s1="update event,committee,ec set status='working' 
+                                    where event.eno=ec.fk_eno and
+                                    committee.cno=ec.fk_cno  and etitle='$ename1'";
+
+   $result = pg_query($conn,$s1);
+        if (!$result)
+        {
+            echo"ERROR.....";
+            
+        }
+        else
+        {
+              echo "record updated";
+        
+        }
+       
+    
+ }
+?>
+Q2.import numpy as np
+import pandas as pd
+from sklearn.preprocessing import LabelEncoder, OneHotEncoder
+
+df = pd.read_csv("D:\Computer Science\TY\SEM5\WT-1\slips-solved\Data.csv")
+#a. Apply OneHot coding on Country column. 
+hot_en = OneHotEncoder()
+enc_df = pd.DataFrame(hot_en.fit_transform(df[['Country']]).toarray())
+df = df.join(enc_df)
+print('\n\nOneHot encoding on country column')
+print(df)
+#b. Apply Label encoding on purchased column 
+label_en = LabelEncoder()
+df['Purchased'] = label_en.fit_transform(df['Purchased'])
+print('\n\n Label encoding on purchased column')
+print(df)

@@ -1,0 +1,95 @@
+
+Q1.
+<html>
+
+<body>
+<form action="setc_2.php" method="post">
+<h2>Enter choice :</h2>
+<input type="radio" name="ch" value=1> split the array into chunksr<br>
+<input type="radio" name="ch" value=2> Sort array by values without changing key <br>
+<input type="radio" name="ch" value=3> Filter even elements from array <br>
+
+<input type="submit" value="SUBMIT">  <input type="reset" value="CLEAR">
+
+</body>
+
+</html>
+
+<?php
+function is_even($var)
+{
+if($var%2==0)
+return $var;
+}
+                                                                                                                             
+$choice=$_POST['ch'];
+
+        $arr=array('a'=>1,'b'=>2,'c'=>3,'d'=>4,'e'=>5,'f'=>6,'g'=>7,'h'=>8);
+              switch($choice)
+        {
+                case 1:
+                        print_r(array_chunk($arr,2));break;
+                case 2:
+                        asort($arr);
+                        echo "Array in ascending order:<br>";
+                        print_r($arr);
+                        arsort($arr);
+                        echo "<br>Array in descending order:<br>";
+                        print_r($arr);
+                        break;
+               case 3:
+                        print_r(array_filter($arr,'is_even'));
+                        break;
+              
+               
+        }
+
+?>
+
+Q2.A)
+     import matplotlib.pyplot as plt
+import numpy as np
+
+# Generate random data
+data = np.random.randint(0, 100, 50)
+
+# Line chart
+plt.subplot(2,2,1)
+plt.plot(data, color='blue', marker='o')
+plt.title('Line Chart')
+plt.xlabel('Index')
+plt.ylabel('Value')
+
+# Scatter plot
+plt.subplot(2,2,2)
+plt.scatter(range(len(data)), data, color='green', marker='x')
+plt.title('Scatter Plot')
+plt.xlabel('Index')
+plt.ylabel('Value')
+
+# Histogram
+plt.subplot(2,2,3)
+plt.hist(data, bins=10, color='red', alpha=0.7)
+plt.title('Histogram')
+plt.xlabel('Value')
+plt.ylabel('Frequency')
+
+# Box plot
+plt.subplot(2,2,4)
+plt.boxplot(data)
+plt.title('Box Plot')
+plt.xlabel('Value')
+
+plt.tight_layout()
+plt.show()
+
+B)
+import matplotlib.pyplot as plt
+import pandas as np
+data = np.random.randint(0, 100, 50)
+data = np.append(data, [150, 200])
+plt.boxplot(data)
+plt.title('Box Plot with Outliers')
+plt.xlabel('Value')
+plt.show()
+
